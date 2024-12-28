@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eVoting System - Login</title>
+    <link rel="stylesheet" href="Evoting.css">
+</head>
+<body>
+    <div class="container">
+        <h1>eVoting System</h1>
+
+        <!-- Login Form -->
+        <section id="login-section">
+            <h2>Voter Login</h2>
+            <form id="login-form" action="#" method="post">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="voterId">Voter ID</label>
+                    <input type="text" id="voterId" name="voterId" required>
+                </div>
+                <div class="button">
+                    <button type="button" class="fingerprint-button" onclick="authenticateFingerprint()">Authenticate with Fingerprint</button>
+                </div>
+                <div id="checkmark" class="checkmark">✔</div>
+            </form>
+        </section>
+
+        <!-- Election Type Section -->
+        <section id="election-section" style="display: none;">
+            <h2>Select Election Type</h2>
+            <div class="election-type">
+                <label>
+                    <input type="radio" name="election" value="mla" onclick="enableConfirmButton()"> MLA Elections
+                </label>
+                <label>
+                    <input type="radio" name="election" value="mlc" onclick="enableConfirmButton()"> MLC Elections
+                </label>
+            </div>
+            <div class="button">
+                <button id="confirm-election" onclick="showCandidatesSection()" disabled>Confirm</button>
+            </div>
+        </section>
+
+        <!-- Candidates Section -->
+        <section id="candidates-section" style="display: none;">
+            <h2>Candidates</h2>
+            <form id="candidates-form" onsubmit="return submitVote()">
+                <div id="candidates-list" class="candidates"></div>
+                <div class="button">
+                    <input type="submit" value="Vote">
+                </div>
+            </form>
+        </section>
+
+        <!-- Vote Confirmation Section -->
+        <section id="confirmation-section" style="display: none;">
+            <h2>Vote Summary</h2>
+            <p id="summary-text"></p>
+            <div class="button">
+                <button onclick="showHomePage()">Done</button>
+            </div>
+        </section>
+
+        <!-- Home Section -->
+        <section id="home-section" style="display: none;">
+            <div class="thank-you">Thank You for Voting!</div>
+            <p>You have successfully submitted your vote.</p>
+            <div class="button">
+                <button onclick="location.reload()">Back to Home</button>
+            </div>
+        </section>
+    </div>
+    <script src="Evoting.js"></script>
+</body>
+</html>
